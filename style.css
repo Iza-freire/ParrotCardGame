@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+*{
+    padding: 0; 
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #eef9bf;
+    font-family: "Roboto", sans-serif;
+}
+
+
+.title {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 66px;
+    letter-spacing: -0.4%;
+    color: #75b79e;
+    text-align: center;
+    margin: 40px auto;
+}
+
+.memory-game {
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 40px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    perspective: 1000px;
+}
+.memory-card{
+    width: 114px;
+    height: 146px;
+    margin: 40px 20px 0 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.face{
+    width: 100%;
+    height: 100%;
+    background-color: #a7e9af;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all 0.5s ease;
+    transform-style: preserve-3d;
+}
+img {
+    position: absolute;
+    width: 100px;
+    height: auto;
+  }
+  
+.back-face {
+  transform: rotateY(180deg);
+}
+
+.virada .back-face {
+  transform: rotateY(0deg);
+}
+
+.virada .front-face {
+  transform: rotateY(-180deg);
+}
+
+@media (max-width: 1000px){
+    .memory-game{
+        width: 100%;
+    }
+}
+@media (max-width: 600px){
+   .title {
+    font-size: 36px;
+    line-height: 42px;
+    letter-spacing: -0.004em;
+    padding: 0 40px;
+  }
+  .memory-game {
+    flex-direction: column;
+    align-items: center;
+  }
+}
