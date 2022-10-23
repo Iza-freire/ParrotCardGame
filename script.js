@@ -1,5 +1,18 @@
 let quantidadecartas
 
+//lista de cartas
+const cards = [
+    "bobrossparrot",
+    "explodyparrot",
+    "fiestaparrot",
+    "metalparrot",
+    "revertitparrot",
+    "tripletsparrot",
+    "unicornparrot"
+  ];
+  
+  const baralho = [];
+
 //Verificando quantidade de cartas
 function selecqtcards() {
     quantidadecartas = Number(
@@ -12,6 +25,7 @@ function selecqtcards() {
         )
       );
     }
+    gerador();
   }
 selecqtcards();
 
@@ -27,7 +41,17 @@ function gameinvalid() {
     return false;
 }
   
-
+//gerando baralho
+function gerador() {
+    for (let i = 0; i < quantidadecartas / 2; i++) {
+      let card = cards[i];
+  
+      baralho.push(card);
+      baralho.push(card);
+    }
+    baralho.sort(comparador);
+    console.log(baralho);
+  }
 
 
 
