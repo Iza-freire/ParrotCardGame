@@ -11,7 +11,7 @@ const cards = [
     "unicornparrot"
   ];
   
-  const baralho = [];
+const baralho = [];
 
 //Verificando quantidade de cartas
 function selecqtcards() {
@@ -49,11 +49,34 @@ function gerador() {
       baralho.push(card);
       baralho.push(card);
     }
+
+     //comparando e embaralhando cartas
     baralho.sort(comparador);
     console.log(baralho);
-  }
 
+    //renderizando baralho
+    renderizaebaralho();
+}
 
+function comparador() {
+    return Math.random() - 0.5;
+}
+
+function renderizaebaralho() {
+    const memorygame = document.querySelector(".memory-game");
+    for (let i = 0; i < baralho.length; i++) {
+      memorygame.innerHTML +=
+        `
+        <li class="memory-card onclick='virarCarta(this)">
+          <div class="front-face face">
+            <img src="imagens/front.png" alt="" />
+          </div>
+          <div class="back-face face">
+            <img src="imagens/${baralho[i]}.gif" alt="" />
+          </div>
+        </li>`;
+    }
+}
 
 
 
