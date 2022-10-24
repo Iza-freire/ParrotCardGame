@@ -32,10 +32,17 @@ body{
     flex-wrap: wrap;
     perspective: 1000px;
 }
+<<<<<<< HEAD
 .memorycard:active {
   transform: scale(0.97);
 }
 .memorycard{
+=======
+.memory-card:active {
+  transform: scale(0.97);
+}
+.memory-card{
+>>>>>>> ba2aa7653a7da74224c472c4df1602af90752142
     width: 114px;
     height: 146px;
     margin: 40px 20px 0 10px;
