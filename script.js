@@ -63,19 +63,11 @@ function comparador() {
 }
 
 function renderizaebaralho() {
-    const memorygame = document.querySelector(".memory-game");
-<<<<<<< HEAD
+  const memorygame = document.querySelector(".memory-game");
 
-    for (let i = 0; i < baralho.length; i++) {
-      memorygame.innerHTML +=
-        `
+  for (let i = 0; i < baralho.length; i++) {
+    memorygame.innerHTML += `
         <li class="memorycard" data-card="${baralho[i]}">
-=======
-    for (let i = 0; i < baralho.length; i++) {
-      memorygame.innerHTML +=
-        `
-        <li class="memory-card onclick='virarCarta(this)">
->>>>>>> ba2aa7653a7da74224c472c4df1602af90752142
           <div class="front-face face">
             <img src="imagens/front.png" alt="" />
           </div>
@@ -83,9 +75,9 @@ function renderizaebaralho() {
             <img src="imagens/${baralho[i]}.gif" alt="" />
           </div>
         </li>`;
-    }
+  }
 }
-<<<<<<< HEAD
+
 
  //Virando as cartas
 
@@ -107,8 +99,7 @@ function flipCard() {
 
   checkForMatch();
 }
-=======
->>>>>>> ba2aa7653a7da74224c472c4df1602af90752142
+
 
  //Conferindo se as cartas viras são iguais
 
