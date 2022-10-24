@@ -64,10 +64,11 @@ function comparador() {
 
 function renderizaebaralho() {
     const memorygame = document.querySelector(".memory-game");
+
     for (let i = 0; i < baralho.length; i++) {
       memorygame.innerHTML +=
         `
-        <li class="memory-card onclick='virarCarta(this)">
+        <li class="memorycard" data-card="${baralho[i]}">
           <div class="front-face face">
             <img src="imagens/front.png" alt="" />
           </div>
@@ -78,5 +79,52 @@ function renderizaebaralho() {
     }
 }
 
+ //Virando as cartas
 
+const cards2 = document.querySelectorAll(".memorycard");
+let firstcard, secundcard;
+let lockcard = false;
 
+function flipCard() {
+  if (lockcard) return false;
+  this.classList.add("flip");
+
+  if (!firstcard) {
+    firstcard = this;
+
+    return false;
+  }
+
+  secundcard = this;
+
+  checkForMatch();
+}
+
+ //Conferindo se as cartas viras são iguais
+
+function checkForMatch() {
+  let isMatch = firstcard.dataset.card === secundcard.dataset.card;
+
+  !isMatch ? disablecards() : resetcards(isMatch);
+}
+
+ //desvirando as cartas diferente
+
+function disablecards() {
+  lockcard = true;
+  setTimeout(() => {
+    firstcard.classList.remove("flip");
+    secundcard.classList.remove("flip");
+    resetcards();
+  }, 1000);
+}
+
+function resetcards(isMatch = false) {
+  if (isMatch) {
+    firstcard.removeEventListener("flip", flipCard);
+    secundcard.removeEventListener("flip", flipCard);
+  }
+  [firstcard, secundcard, lockcard] = [null, null, false];
+}
+
+cards2.forEach((card) => card.addEventListener("click", flipCard));

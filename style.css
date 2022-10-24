@@ -32,10 +32,10 @@ body{
     flex-wrap: wrap;
     perspective: 1000px;
 }
-.memory-card:active {
+.memorycard:active {
   transform: scale(0.97);
 }
-.memory-card{
+.memorycard{
     width: 114px;
     height: 146px;
     margin: 40px 20px 0 10px;
@@ -67,11 +67,11 @@ img {
   transform: rotateY(180deg);
 }
 
-.virada .back-face {
+.flip .back-face {
   transform: rotateY(0deg);
 }
 
-.virada .front-face {
+.flip .front-face {
   transform: rotateY(-180deg);
 }
 
