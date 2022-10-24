@@ -16,13 +16,11 @@ const baralho = [];
 //Verificando quantidade de cartas
 function selecqtcards() {
     quantidadecartas = Number(
-      prompt("Digite a quantidade de cartas (Escolha um numero par entre 4 e 14)")
+      prompt("Para iniciar o jogo digite a quantidade de cartas (Escolha um número par entre 4 e 14)")
     );
     while (gameinvalid()) {
       quantidadecartas = Number(
-        prompt(
-          "Digite a quantidade de cartas (Escolha um numero par entre 4 e 14)"
-        )
+        prompt("Para iniciar o jogo digite a quantidade de cartas (Escolha um número par entre 4 e 14)")
       );
     }
     gerador();
@@ -83,7 +81,12 @@ function renderizaebaralho() {
 
 const cards2 = document.querySelectorAll(".memorycard");
 let firstcard, secundcard;
+
 let lockcard = false;
+
+let jogadas = 0;
+
+let acertos = 0;
 
 function flipCard() {
   if (lockcard) return false;
@@ -97,14 +100,19 @@ function flipCard() {
 
   secundcard = this;
 
+  jogadas++;
+
   checkForMatch();
 }
 
 
- //Conferindo se as cartas viras são iguais
+ //Conferindo se as cartas viradas são iguais
 
 function checkForMatch() {
   let isMatch = firstcard.dataset.card === secundcard.dataset.card;
+  acertos = acertos + 2;
+
+  finalizarJogo();
 
   !isMatch ? disablecards() : resetcards(isMatch);
 }
@@ -126,6 +134,16 @@ function resetcards(isMatch = false) {
     secundcard.removeEventListener("flip", flipCard);
   }
   [firstcard, secundcard, lockcard] = [null, null, false];
+}
+
+function finalizarJogo() {
+  let ganhou = document.querySelectorAll(".flip");
+  console.log(ganhou.length);
+  if (ganhou.length === quantidadecartas) {
+    setTimeout(() => {
+      alert(`Parabéns! Você ganhou em ${acertos} jogadas! :)`);
+    }, 1000);
+  }
 }
 
 cards2.forEach((card) => card.addEventListener("click", flipCard));
